@@ -5,6 +5,7 @@ import {getUserRoomCollection} from "../../services/ServiceUsers";
 import {getRoom} from "../../services/ServiceRoom";
 import {getRestaurantCollection} from "../../services/ServiceRestaurant";
 import Chat from "../../components/Molecules/Chat/Chat";
+import RoomMap from './Partials/RoomMap';
 
 const Room = () => {
 
@@ -46,6 +47,7 @@ const Room = () => {
 			</div>
 		</aside>
 		<Chat currentUser={currentUser}/>
+		<RoomMap/>
 	</section>);
 };
 
