@@ -1,8 +1,13 @@
-import Room from "./views/Room/Room";
+import {BrowserRouter} from "react-router-dom";
+import Router from "./router/Router";
 
 const  App = () => {
   return (
-  <Room/>
+      <div className="App">
+        <BrowserRouter>
+          <Router/>
+        </BrowserRouter>
+      </div>
   );
 }
 
