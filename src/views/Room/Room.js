@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import {getUserRoomCollection} from "../../services/ServiceUsers";
 import {getRoom} from "../../services/ServiceRoom";
 import {getRestaurantCollection} from "../../services/ServiceRestaurant";
+import Chat from "../../components/Molecules/Chat/Chat";
 
 const Room = () => {
 
@@ -42,6 +43,7 @@ const Room = () => {
 				</ul>
 			</div>
 		</aside>
+		<Chat currentUser={currentUser}/>
 	</section>);
 };
 
