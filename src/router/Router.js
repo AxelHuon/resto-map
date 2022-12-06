@@ -5,7 +5,7 @@ import Room from "../views/Room/Room";
 const Router = () => {
 	return (<div className={"container-page"}>
 			<Routes>
-				<Route path="/room:id" element={<Room/>}></Route>
+				<Route path="/user:idCurrentUser/room:idRoom" element={<Room/>}></Route>
 			</Routes>
 		</div>);
 };
