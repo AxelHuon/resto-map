@@ -1,5 +1,5 @@
-import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import React, { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L, { Icon } from 'leaflet'
 import '../../../style/main.css';
@@ -25,17 +25,37 @@ const RoomMap = () => {
       // calcule la distance et le temps
       var totalDistance = distanceFirstRoute + distanceSecondRoute
       var totalTemps = totalDistance / 83
-      //voir la distance et le temps dans la console
-      console.log(totalDistance);
-      console.log(totalTemps);
+      
+
+      function LocationMarker() {
+        const [position, setPosition] = useState(null)
+        const map = useMapEvents({ 
+          move() {
+            map.locate()
+          },
+          locationfound(e) {
+            setPosition(e.latlng)
+            map.flyTo(e.latlng, map.getZoom())
+          },
+        })
+      
+        return position === null ? null : (
+          <Marker icon={customIcon} position={position}>
+            <Popup>You are here</Popup>
+          </Marker>
+        )
+      }
+      
+
 
 	return (
         <div className="map" id="map" >
           <MapContainer center={pointArrive} zoom={13} scrollWheelZoom={true}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-            <Marker icon={customIcon} pointArrive={pointArrive}>
+            <LocationMarker />
+            {/* <Marker  pointArrive={pointArrive}>
               <Popup>Nom du Restaurant/ user/point d'arrivé</Popup>
-            </Marker>
+            </Marker> */}
           </MapContainer>
         </div>
 	);
