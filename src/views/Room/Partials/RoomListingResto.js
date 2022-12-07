@@ -1,17 +1,26 @@
 import React from 'react';
 
-const RoomListingResto = ({restaurants}) => {
+const RoomListingResto = ({restaurants, currentUser, onClickChangeResto}) => {
 
-	console.log(restaurants)
+	console.log(currentUser.choosenResto)
+	console.log(restaurants[0].id)
+
+
 	return (
 		<section className={"section-room-listing-resto"}>
 			<div className={"section-room-listing-resto-container"}>
 				<ul>
 
 				{restaurants.map((item,index)=>{
-					return(
-						<li className={"text-20 text-white medium"} key={index}>{item.name}</li>
+					if (item.id == currentUser.choosenResto){
+										return(
+						<li className={"text-20 active text-black bold"} key={index}>{item.name}</li>
 					)
+					}else{
+					return(
+						<li onClick={(e)=>onClickChangeResto(item.id)} className={"text-20 text-black bold"} key={index}>{item.name}</li>
+					)
+					}
 				})}
 				</ul>
 			</div>

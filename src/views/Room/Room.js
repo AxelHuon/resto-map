@@ -32,11 +32,21 @@ const Room = () => {
 		setChatIsDisplay(false)
 	}
 
+	const changeChoosenResto = (newResto) =>{
+		let newCurrentUser = {
+			id : currentUser.id,
+			name : currentUser.name,
+			roomId : currentUser.roomId,
+			choosenResto : newResto
+
+		}
+		setCurrentUser(newCurrentUser)
+	}
 
 	return (<>
 			<RoomMapChatButton onClickChatButton={(e) => handleClickChatDisplay()}/>
 			<RoomChat CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
-			<RoomListingResto restaurants={restaurants}/>
+			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 		</>);
 };
 
