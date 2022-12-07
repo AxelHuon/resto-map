@@ -1,11 +1,11 @@
 const users = [{
 	id: "1", name: "Axel",
 	location: {
-		lat: "", long: ""
-	}, roomId: "1", choosenResto: 1
+		long: 48.9092443, lat: 2.2247678
+	}, roomId: "1", choosenResto: "1"
 }, {
 	id: "2", name: "Pierre", location: {
-		lat: 48.893139, long: 2.226910
+		long: 48.893139, lat: 2.226910
 	}, roomId: "1", choosenResto: "1",
 },]
 

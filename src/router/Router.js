@@ -5,7 +5,7 @@ import Room from "../views/Room/Room";
 const Router = ({socket}) => {
 	return (<div className={"container-page"}>
 			<Routes>
-				<Route  path="/user:idCurrentUser/room:idRoom" element={<Room socket={socket}/>}></Route>
+				<Route  path="/room:idRoom" element={<Room socket={socket}/>}></Route>
 			</Routes>
 		</div>);
 };

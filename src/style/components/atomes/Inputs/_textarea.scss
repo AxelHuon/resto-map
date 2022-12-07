@@ -2,6 +2,9 @@
   border-radius: 10px;
   padding: 10px 25px;
   border: none;
+  resize: none;
+  @extend .regular;
+  font-size: 13px;
   &:focus{
     outline: none;
   }

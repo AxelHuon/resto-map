@@ -1,6 +1,7 @@
 import React from 'react';
 
 const RoomAllUsers = ({room, users, currentUser}) => {
+	console.log(users)
 	return (
 		<section className={"section-all-users"}>
 			<aside className={"section-all-users-container"}>
