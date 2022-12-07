@@ -1,0 +1,11 @@
+.button-chat{
+  display: inline-block;
+  background: $primary;
+  padding: 1.3em;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  &:focus{
+    outline: none;
+  }
+}

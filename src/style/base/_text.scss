@@ -1,0 +1,26 @@
+$sizes: ("100" : 100, "65" : 65, "50" : 50, "35" : 35, "20" : 20, "15" : 15, "13" : 13);
+
+@each $name, $size in $sizes {
+  .text-#{$name} {
+    font-size: #{$size}px;
+    line-height: calc(#{$size}px + 5px);
+  }
+}
+
+
+$colors: ("primary" : $primary, "black" : $black, "white" : $white, "grey" : $grey);
+
+@each $name, $color in $colors {
+  .text-#{$name} {
+    color:$color;
+  }
+}
+
+
+$fonts: ("bold" : "Satoshi-Bold", "regular" : "Satoshi-Regular", "medium" : "Satoshi-Medium");
+
+@each $name, $font in $fonts {
+  .#{$name} {
+    font-family:$font;
+  }
+}
