@@ -7,6 +7,7 @@ import {getRestaurantCollection} from "../../services/ServiceRestaurant";
 import RoomMapChatButton from "./Partials/RoomMapChatButton";
 import RoomChat from "./Partials/RoomChat";
 import RoomListingResto from "./Partials/RoomListingResto";
+import RoomAllUsers from "./Partials/RoomAllUsers";
 
 const Room = () => {
 
@@ -44,9 +45,12 @@ const Room = () => {
 	}
 
 	return (<>
+			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
 			<RoomMapChatButton onClickChatButton={(e) => handleClickChatDisplay()}/>
+
 			<RoomChat CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
+
 		</>);
 };
 

@@ -116,6 +116,9 @@ li {
   border: none;
   cursor: pointer;
 }
+.button-chat img {
+  width: 25px;
+}
 .button-chat:focus {
   outline: none;
 }
@@ -253,7 +256,7 @@ li {
   justify-content: center;
 }
 .section-room-listing-resto-container {
-  width: 921px;
+  width: 700px;
   padding: 1em;
   background: rgba(245, 253, 255, 0.1);
   backdrop-filter: blur(36.0667px);
@@ -261,17 +264,41 @@ li {
 }
 .section-room-listing-resto-container ul {
   display: flex;
-  gap: 30px;
+  justify-content: space-between;
 }
 .section-room-listing-resto-container ul li {
   background: #F5FDFF;
   border-radius: 50px;
   display: inline-block;
   padding: 15px 30px;
+  cursor: pointer;
 }
 .section-room-listing-resto-container ul li.active {
   background-color: #FF5964;
   color: #F5FDFF;
+  position: relative;
+}
+
+.section-all-users {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(217, 217, 217, 0.1);
+  backdrop-filter: blur(30.9px);
+  border-radius: 0px 0px 37px 0px;
+  min-width: 274px;
+}
+.section-all-users-container {
+  padding: 40px 40px;
+}
+.section-all-users-container-listing {
+  margin-top: 30px;
+}
+.section-all-users-container-listing ul li {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 /*# sourceMappingURL=main.css.map */
