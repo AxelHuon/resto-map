@@ -9,7 +9,7 @@ import RoomChat from "./Partials/RoomChat";
 import RoomListingResto from "./Partials/RoomListingResto";
 import RoomAllUsers from "./Partials/RoomAllUsers";
 
-const Room = () => {
+const Room = ({socket}) => {
 
 	const paramsRoom = useParams()
 	//get les users de la room
@@ -23,6 +23,15 @@ const Room = () => {
 	const [restaurants, setRestaurants] = useState(getRestaurantCollection);
 
 	const [chatIsDisplay, setChatIsDisplay] = useState(false);
+
+
+	const joinRoom = () =>{
+		if (currentUser !== "" && room !==""){
+			socket.emit("join_room",room)
+		}
+	}
+
+	joinRoom()
 
 
 	const handleClickChatDisplay = () =>{
@@ -48,7 +57,7 @@ const Room = () => {
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
 			<RoomMapChatButton onClickChatButton={(e) => handleClickChatDisplay()}/>
 
-			<RoomChat CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
+			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 
 		</>);

@@ -2,8 +2,6 @@ import React from 'react';
 
 const RoomListingResto = ({restaurants, currentUser, onClickChangeResto}) => {
 
-	console.log(currentUser.choosenResto)
-	console.log(restaurants[0].id)
 
 
 	return (

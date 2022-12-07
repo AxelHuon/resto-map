@@ -254,6 +254,7 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  display: none;
 }
 .section-room-listing-resto-container {
   width: 700px;
