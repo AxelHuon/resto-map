@@ -2,25 +2,28 @@ import React, {useEffect, useRef, useState} from 'react';
 import InputText from "../../../components/Atomes/Inputs/TextArea";
 import TextArea from "../../../components/Atomes/Inputs/TextArea";
 import Button from "../../../components/Atomes/Buttons/Buttons";
+import InputTime from '../../../components/Atomes/Inputs/InputTime';
 
 const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) => {
 
 	const [currentMessage, setCurrentMessage] = useState();
-
+	const [currentTime, setCurrentTime] = useState([]);
 	const [allMessgae, setAllMessage] = useState([])
 
-	const sendMessage = async () => {
-		if (currentMessage != "") {
-			if (currentMessage.includes("#")) {
-				setCurrentMessage("")
-			} else {
+	const sendTime = async () => {
+		const timeContent = {time:  currentTime}
+		await socket.emit("send_time", timeContent)
+		setCurrentTime(currentTime)
+		console.log(currentTime)
+	}
 
+	const sendMessage = async () => {
+		if (currentMessage !== "") {
 				const messageContent = {
 					room: room.id, user: currentUser.name, message: currentMessage
 				}
 				await socket.emit("send_message", messageContent)
 				setAllMessage((allMessage) => [...allMessage, messageContent])
-			}
 		}
 	}
 
@@ -28,6 +31,11 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 		socket.on("receive_message", (data) => {
 			setAllMessage((allMessage) => [...allMessage, data])
 		})
+		socket.on("receive_time", (data) => {
+			setCurrentTime((data)=> [data])
+			console.log(data)
+		})
+		
 	}, [socket]);
 
 
@@ -59,9 +67,16 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 				<TextArea value={currentMessage} onChange={(e) => {
 					setCurrentMessage(e.target.value)
 				}}/>
-				<Button styleSelected={"btn-custom text-13 text-white bold"} onClick={(e) => sendMessage()}
+				<Button styleSelected={"btn-custom text-13 text-white bold textarea-button"} className={""} onClick={(e) => sendMessage()}
 						title={"Envoyer"}/>
 			</div>
+			<div className={"section-room-chat-side-bar-container-cta"}>
+				<InputTime value={currentTime}  onChange={(e) => {
+					setCurrentTime(e.target.value)
+				}}/>
+				<Button styleSelected={"btn-custom text-13 text-white bold"} onClick={(e) => sendTime()}
+						title={"changer l'heure"}/>
+				</div>
 		</aside>
 	</section>);
 };
