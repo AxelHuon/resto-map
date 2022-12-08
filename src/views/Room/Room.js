@@ -151,7 +151,7 @@ const Room = ({socket}) => {
 	if (currentUser){
 	return (<>
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
-			<RoomMapChatButton changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
+			<RoomMapChatButton currentUser={currentUser} changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
 			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 

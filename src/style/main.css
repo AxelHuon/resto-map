@@ -197,21 +197,9 @@ input[type=text]:focus {
   height: 100px;
 }
 
-.custom-div-icon {
-  width: 100px;
-  height: 100px;
-}
-.custom-div-icon:nth-child(1n) {
-  background-color: blue;
-}
-.custom-div-icon:nth-child(2n) {
-  background-color: red;
-}
-.custom-div-icon:nth-child(3n) {
-  background-color: yellow;
-}
-.custom-div-icon.resto {
-  background-color: cyan;
+.custom-div-icon img {
+  width: 50px;
+  height: 50px;
 }
 .custom-div-icon.final-point {
   background-color: purple;
@@ -219,8 +207,7 @@ input[type=text]:focus {
 
 .section-room-chat-side-bar {
   background: rgba(217, 217, 217, 0.147);
-  -webkit-backdrop-filter: blur(91.8133px);
-          backdrop-filter: blur(91.8133px);
+  backdrop-filter: blur(91.8133px);
   width: 442px;
   height: 100Vh;
   position: absolute;
@@ -295,8 +282,6 @@ input[type=text]:focus {
   padding: 20px 0;
 }
 .section-room-chat-side-bar-container-cta * {
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
   height: fit-content;
 }
 .section-room-chat-side-bar-container-cta textarea, .section-room-chat-side-bar-container-cta input {
@@ -315,8 +300,7 @@ input[type=text]:focus {
   width: 700px;
   padding: 1em;
   background: rgba(245, 253, 255, 0.1);
-  -webkit-backdrop-filter: blur(36.0667px);
-          backdrop-filter: blur(36.0667px);
+  backdrop-filter: blur(36.0667px);
   border-radius: 50px;
 }
 .section-room-listing-resto-container ul {
@@ -342,8 +326,7 @@ input[type=text]:focus {
   left: 0;
   top: 0;
   background: rgba(217, 217, 217, 0.1);
-  -webkit-backdrop-filter: blur(30.9px);
-          backdrop-filter: blur(30.9px);
+  backdrop-filter: blur(30.9px);
   border-radius: 0px 0px 37px 0px;
   min-width: 274px;
 }
