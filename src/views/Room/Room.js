@@ -50,11 +50,10 @@ const Room = ({socket}) => {
 
 	useEffect(() => {
 		if ("geolocation" in navigator) {
-			navigator.geolocation.getCurrentPosition(function (position) {
+			navigator.geolocation.watchPosition(function (position) {
 				setCurrentPosition([position.coords.longitude, position.coords.latitude])
 			});
 		}
-
 	}, []);
 
 	console.log(currentPosition)
@@ -173,7 +172,7 @@ const Room = ({socket}) => {
 	if (currentUser) {
 		return (<>
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
-			<div className={"time-to-go background-red"}>
+			<div className={"time-to-go background-primary"}>
 				{allTime.map((item, index) => {
 					if (allTime.length - 1 === index) {
 						return (<li key={index}><p
