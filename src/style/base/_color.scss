@@ -2,3 +2,21 @@ $white : #F5FDFF;
 $black : #242424;
 $primary : #FF5964;
 $grey : #676767;
+$red : #cf0606;
+$green : #63ff63;
+
+
+$colors: (
+    "primary" : $primary,
+    "black" : $black,
+    "white" : $white,
+    "grey" : $grey,
+    "red": $red,
+    "green": $green,
+);
+
+@each $name, $color in $colors {
+  .background-#{$name} {
+    background-color: $color;
+  }
+}

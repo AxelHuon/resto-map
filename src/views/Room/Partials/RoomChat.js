@@ -1,21 +1,13 @@
-import React, {useEffect, useRef, useState} from 'react';
-import InputText from "../../../components/Atomes/Inputs/TextArea";
+import React, {useEffect, useState} from 'react';
 import TextArea from "../../../components/Atomes/Inputs/TextArea";
 import Button from "../../../components/Atomes/Buttons/Buttons";
 import InputTime from '../../../components/Atomes/Inputs/InputTime';
 
-const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) => {
+const RoomChat = ({currentUser, currentTime, onClickChangeCurrentTime, setCurrentTime, chatIsDisplay, CloseOnClickChat, room, socket}) => {
 
-	const [currentMessage, setCurrentMessage] = useState();
-	const [currentTime, setCurrentTime] = useState([]);
+	const [currentMessage, setCurrentMessage] = useState()
 	const [allMessgae, setAllMessage] = useState([])
 
-	const sendTime = async () => {
-		const timeContent = {time:  currentTime}
-		await socket.emit("send_time", timeContent)
-		setCurrentTime(currentTime)
-		console.log(currentTime)
-	}
 
 	const sendMessage = async () => {
 		if (currentMessage !== "") {
@@ -32,18 +24,13 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 			console.log(data)
 			setAllMessage((allMessage) => [...allMessage, data])
 		})
-		socket.on("receive_time", (data) => {
-			setCurrentTime((data)=> [data])
-			console.log(data)
-		})
-		
 	}, [socket]);
 
 
 	return (<section className={"section-room-chat-side-bar " + (chatIsDisplay ? "active" : " ")}>
 		<aside className={"section-room-chat-side-bar-container"}>
 			<button onClick={CloseOnClickChat} className={"button-chat close-button"}>
-				<img src={"/assets/pictos/close.svg"}/>
+				<img src={"/assets/pictos/close.svg"} alt={"img"}/>
 			</button>
 			<div className={"section-room-chat-side-bar-container-all-message"}>
 				<ul>
@@ -51,17 +38,18 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 						if (currentUser.name === item.user) {
 							return (<li className={"message-item current-user"} key={index}><span
 								className={"text-13 text-white medium"}><img
-								src={"/assets/image/user.png"}/> {item.user} </span><p
+								src={"/assets/image/user.png"} alt={"img"}/> {item.user} </span><p
 								className={"text-black text-13 regular"}>{item.message}
 							</p></li>)
 						} else {
 							return (<li className={"message-item"} key={index}><span
 								className={"text-13 text-white medium"}><img
-								src={"/assets/image/user.png"}/> {item.user} </span><p
+								src={"/assets/image/user.png"} alt={"img"}/> {item.user} </span><p
 								className={"text-black text-13 regular"}>{item.message}
 							</p></li>)
 						}
 					})}
+					
 				</ul>
 			</div>
 			<div className={"section-room-chat-side-bar-container-cta"}>
@@ -75,7 +63,7 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 				<InputTime value={currentTime}  onChange={(e) => {
 					setCurrentTime(e.target.value)
 				}}/>
-				<Button styleSelected={"btn-custom text-13 text-white bold"} onClick={(e) => sendTime()}
+				<Button styleSelected={"btn-custom text-13 text-white bold"} onClick={(e) => onClickChangeCurrentTime()}
 						title={"changer l'heure"}/>
 				</div>
 		</aside>
