@@ -168,7 +168,8 @@ li {
 
 .section-room-chat-side-bar {
   background: rgba(217, 217, 217, 0.147);
-  backdrop-filter: blur(91.8133px);
+  -webkit-backdrop-filter: blur(91.8133px);
+          backdrop-filter: blur(91.8133px);
   width: 442px;
   height: 100Vh;
   position: absolute;
@@ -237,16 +238,19 @@ li {
   flex-direction: row;
   justify-content: space-between;
   height: 8%;
-  align-items: flex-end;
+  align-items: center;
   gap: 10px;
+  padding: 20px 0;
 }
 .section-room-chat-side-bar-container-cta * {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
 }
-.section-room-chat-side-bar-container-cta textarea {
+.section-room-chat-side-bar-container-cta textarea, .section-room-chat-side-bar-container-cta input {
   width: 60%;
 }
-.section-room-chat-side-bar-container-cta button {
+.section-room-chat-side-bar-container-cta .textarea-button {
   width: 40%;
 }
 
@@ -260,7 +264,8 @@ li {
   width: 700px;
   padding: 1em;
   background: rgba(245, 253, 255, 0.1);
-  backdrop-filter: blur(36.0667px);
+  -webkit-backdrop-filter: blur(36.0667px);
+          backdrop-filter: blur(36.0667px);
   border-radius: 50px;
 }
 .section-room-listing-resto-container ul {
@@ -285,7 +290,8 @@ li {
   left: 0;
   top: 0;
   background: rgba(217, 217, 217, 0.1);
-  backdrop-filter: blur(30.9px);
+  -webkit-backdrop-filter: blur(30.9px);
+          backdrop-filter: blur(30.9px);
   border-radius: 0px 0px 37px 0px;
   min-width: 274px;
 }
@@ -300,6 +306,4 @@ li {
   display: flex;
   align-items: center;
   gap: 15px;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
