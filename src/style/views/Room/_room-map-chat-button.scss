@@ -1,5 +1,5 @@
 .section-room-map-chat-button{
-  height: 80vh;
+  height: 85vh;
   width: 100%;
   padding-inline: 5%;
   &-container{
@@ -14,6 +14,10 @@
       right: 0%;
       top: 50%;
       transform: translate(-50%, -50%);
+      @media(max-width: 1100px)
+      {
+        right: -6%;
+      }
     }
   }
 }

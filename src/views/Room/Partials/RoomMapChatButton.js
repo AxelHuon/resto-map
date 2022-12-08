@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomMap from "./RoomMap";
+import {MapContainer} from "react-leaflet";
 
 const RoomMapChatButton = ({onClickChatButton,users, restaurants,room,changePositionFinalPoint, currentUser}) => {
 	return (<section className={"section-room-map-chat-button"}>

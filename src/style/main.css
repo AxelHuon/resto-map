@@ -179,7 +179,7 @@ input[type=text]:focus {
 }
 
 .section-room-map-chat-button {
-  height: 80vh;
+  height: 85vh;
   width: 100%;
   padding-inline: 5%;
 }
@@ -196,6 +196,11 @@ input[type=text]:focus {
   right: 0%;
   top: 50%;
   transform: translate(-50%, -50%);
+}
+@media (max-width: 1100px) {
+  .section-room-map-chat-button-container .button-chat {
+    right: -6%;
+  }
 }
 
 .map {
@@ -224,9 +229,6 @@ input[type=text]:focus {
 .custom-div-icon img {
   width: 50px;
   height: 50px;
-}
-.custom-div-icon.final-point {
-  background-color: purple;
 }
 
 .time-to-go {
@@ -364,16 +366,16 @@ input[type=text]:focus {
   min-width: 274px;
 }
 .section-all-users-container {
-  padding: 40px 40px;
+  padding: 20px 20px;
 }
 .section-all-users-container-listing {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .section-all-users-container-listing ul li {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 5px;
 }
 
 .add-user {
