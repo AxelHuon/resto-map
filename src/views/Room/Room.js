@@ -170,8 +170,6 @@ const Room = ({socket}) => {
 	if (currentUser){
 	return (<>
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
-			<RoomMapChatButton currentUser={currentUser} changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
-			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<div className={"time-to-go background-red"}>
 			{allTime.map((item, index) => {
 						if (allTime.length - 1 === index) {
@@ -182,7 +180,8 @@ const Room = ({socket}) => {
 						}
 					})}
 			</div>
-			<RoomMapChatButton changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
+			<RoomMapChatButton currentUser={currentUser} changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
+			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser} currentTime={currentTime}  setCurrentTime={setCurrentTime} onClickChangeCurrentTime={sendTime}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 

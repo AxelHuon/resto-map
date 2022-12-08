@@ -69,25 +69,11 @@ const RoomMap = ({restaurants, users, room, changePositionFinalPoint, currentUse
 		setAllLinesRestoToFinalPoint(newLinesArray)
 	}, [allPostionResto,room]);
 
-
-	useEffect(() => {
-
-	}, [restaurantsSelected]);
-
-
 	return (<div className="map" id="map">
 
 		<MapContainer center={postionCenterMap} zoom={13} scrollWheelZoom={true}>
 			<TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-			{users.map((item,index) => {
-				if(item.id === currentUser.id){
-					return (<Marker key={index} icon={customIconCurrentUser} position={[item.location.long, item.location.lat]}>
-						</Marker>)
-				}else{
-					return (<Marker key={index} icon={customIcon} position={[item.location.long, item.location.lat]}>
-					</Marker>)
-				}
-			})}
+
 			{restaurantsSelected.map((item, index) => {
 				return (<Marker key={index} icon={customIconResto} position={[item.location.long, item.location.lat]}>
 				</Marker>)
