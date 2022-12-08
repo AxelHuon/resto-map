@@ -26,7 +26,6 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 
 	useEffect(() => {
 		socket.on("receive_message", (data) => {
-			console.log(data)
 			setAllMessage((allMessage) => [...allMessage, data])
 		})
 	}, [socket]);

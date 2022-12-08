@@ -213,6 +213,9 @@ input[type=text]:focus {
 .custom-div-icon.resto {
   background-color: cyan;
 }
+.custom-div-icon.final-point {
+  background-color: purple;
+}
 
 .section-room-chat-side-bar {
   background: rgba(217, 217, 217, 0.147);

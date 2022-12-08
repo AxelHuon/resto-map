@@ -1,7 +1,7 @@
 const rooms = [{
 	id: "1",
 	finalPoint: {
-		long: 48.892670, lat: 2.237030,
+		long: 48.890011, lat: 2.197020,
 	},
 
 },]

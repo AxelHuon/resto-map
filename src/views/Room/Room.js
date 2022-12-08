@@ -41,56 +41,12 @@ const Room = ({socket}) => {
 		setChatIsDisplay(false)
 	}
 
-	const changeChoosenResto = async (newResto) =>{
-
-		const data = {
-			resto : newResto,
-			room:room.id,
-			user:currentUser.id
-		}
-		await socket.emit("change_resto", data)
-
-		//Change le currentUser
-		let newCurrentUser = {
-			id : currentUser.id,
-			name : currentUser.name,
-			roomId : currentUser.roomId,
-			choosenResto : newResto
-
-		}
-		setCurrentUser(newCurrentUser)
-
-		//Change dans all users
-		const newState = users.map(obj => {
-			if (obj.id === currentUser.id) {
-				return {...obj, choosenResto: newResto};
-			}
-			return obj;
-		});
-		setUsers(newState);
-	};
-
-	useEffect(() => {
-		socket.on("receive_new_resto", (data) => {
-			//Change dans all users
-			const newState = users.map(obj => {
-				if (obj.id === data.user) {
-					return {...obj, choosenResto: data.resto};
-				}
-				return obj;
-			});
-			setUsers(newState);
-		})
-	}, [socket]);
-
-
-
 
 	const [currentNameUser, setCurrentNameUser] = useState("");
 	const addUser = async () =>{
 		if (currentNameUser){
 			let newUser = {
-				id: users.length + 1,
+				id: String(users.length + 1),
 				name: currentNameUser,
 				location: {
 					long: 48.9092443,
@@ -108,24 +64,94 @@ const Room = ({socket}) => {
 			setUsers([...users,newUser])
 		}
 	}
-
 	useEffect(() => {
 		socket.on("receive_new_user", (data) => {
-			console.log(users)
 			let newUser = data.user
 			setUsers((users) => [...users, newUser])
 		})
 	}, [socket]);
 
 
+	const changeChoosenResto = async (newResto) =>{
+		const data = {
+			resto : newResto,
+			room:room.id,
+			user:currentUser.id
+		}
+		await socket.emit("change_resto", data)
+		//Change le currentUser
+		let newCurrentUser = {
+			id : currentUser.id,
+			name : currentUser.name,
+			location:{
+				long: currentUser.long, lat:currentUser.lat
+			},
+			roomId : currentUser.roomId,
+			choosenResto : newResto
+		}
+		setCurrentUser(newCurrentUser)
+		//Change dans all users
+		const newState = users.map(obj => {
+			if (obj.id === currentUser.id) {
+				return {...obj, choosenResto: newResto};
+			}
+			return obj;
+		});
+		setUsers(newState);
+	};
 
+	const changePositionFinalPoint = async (newLocation) =>{
+		//Change dans all users
+		setRoom({
+			id : room.id,
+			finalPoint : {
+				lat : newLocation.lng,
+				long : newLocation.lat
+			}
+		})
+		let data = {
+			room : room.id,
+			newLocation : newLocation
+		}
+		await socket.emit("update_final_point", data)
+	}
+
+
+
+	useEffect(() => {
+		socket.on("receive_new_location", (data) => {
+			setRoom({
+				id:room.id,
+				finalPoint : {
+					lat : data.newLocation.lng,
+					long : data.newLocation.lat
+				}
+			})
+		})
+	}, [socket]);
+
+
+	useEffect(() => {
+		socket.on("receive_new_resto", (data) => {
+			setUsers(prevNewUsers => {
+				const newUsers = prevNewUsers.map(obj => {
+					// 👇️ if id equals 2, update country property
+					if (obj.id === data.user) {
+						return {...obj, choosenResto: data.resto};
+					}
+					return obj;
+				});
+				return newUsers;
+			});
+		})
+	}, [socket]);
 
 
 
 	if (currentUser){
 	return (<>
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
-			<RoomMapChatButton users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
+			<RoomMapChatButton changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
 			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 
