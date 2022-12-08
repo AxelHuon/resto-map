@@ -148,11 +148,42 @@ const Room = ({socket}) => {
 
 
 
+	//pour l'heure de rendez vous
+	const [currentTime, setCurrentTime] = useState([])
+	const [allTime, setAllTime] = useState([])
+
+	const sendTime = async () => {
+		const timeContent = {
+			room: room.id, user: currentUser.name, time: currentTime
+		}
+		await socket.emit("send_time", timeContent)
+		setAllTime((allTime) => [...allTime, timeContent])
+	}
+
+	useEffect(() => {
+		socket.on("receive_time", (data) => {
+			setAllTime((allTime) => [...allTime, data])
+		})
+	}, [socket]);
+
+
 	if (currentUser){
 	return (<>
 			<RoomAllUsers room={room} users={users} currentUser={currentUser}/>
 			<RoomMapChatButton currentUser={currentUser} changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
 			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser}/>
+			<div className={"time-to-go background-red"}>
+			{allTime.map((item, index) => {
+						if (allTime.length - 1 === index) {
+							return (<li key={index}><p
+								className={"text-black text-23 regular"}>Le rendez vous a été fixé
+								a {item.time}h par {item.user}.
+							</p></li>)
+						}
+					})}
+			</div>
+			<RoomMapChatButton changePositionFinalPoint={changePositionFinalPoint} room={room} users={users} restaurants={restaurants} onClickChatButton={(e) => handleClickChatDisplay()}/>
+			<RoomChat room={room} socket={socket} CloseOnClickChat={(e) => CloseOnClickChat(e)} chatIsDisplay={chatIsDisplay} currentUser={currentUser} currentTime={currentTime}  setCurrentTime={setCurrentTime} onClickChangeCurrentTime={sendTime}/>
 			<RoomListingResto onClickChangeResto={changeChoosenResto} currentUser={currentUser} restaurants={restaurants}/>
 
 		</>);

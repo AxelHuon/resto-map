@@ -17,6 +17,30 @@ li {
   list-style-type: none;
 }
 
+.background-primary {
+  background-color: #FF5964;
+}
+
+.background-black {
+  background-color: #242424;
+}
+
+.background-white {
+  background-color: #F5FDFF;
+}
+
+.background-grey {
+  background-color: #676767;
+}
+
+.background-red {
+  background-color: #cf0606;
+}
+
+.background-green {
+  background-color: #63ff63;
+}
+
 .text-100 {
   font-size: 100px;
   line-height: calc(100px + 5px);
@@ -205,6 +229,15 @@ input[type=text]:focus {
   background-color: purple;
 }
 
+.time-to-go {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+}
+
 .section-room-chat-side-bar {
   background: rgba(217, 217, 217, 0.147);
   backdrop-filter: blur(91.8133px);
@@ -350,6 +383,4 @@ input[type=text]:focus {
   align-items: center;
   height: 100vh;
   justify-content: center;
-}
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */
