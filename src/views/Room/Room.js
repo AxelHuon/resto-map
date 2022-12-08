@@ -56,13 +56,11 @@ const Room = ({socket}) => {
 		}
 	}, []);
 
-	console.log(currentPosition)
 
 	//New user
 	const [currentNameUser, setCurrentNameUser] = useState("");
 	const addUser = async () => {
 
-		console.log("ici")
 		if (currentNameUser) {
 			let newUser = {
 				id: String(users.length + 1), name: currentNameUser, location: {
@@ -75,7 +73,6 @@ const Room = ({socket}) => {
 			await socket.emit("add_user", data)
 			setCurrentUser(newUser)
 			setUsers([...users, newUser])
-			console.log(currentUser)
 		}
 
 
