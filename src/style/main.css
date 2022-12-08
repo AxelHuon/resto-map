@@ -72,7 +72,7 @@ li {
   font-family: "Satoshi-Bold";
 }
 
-.regular {
+.regular, .textarea-custom {
   font-family: "Satoshi-Regular";
 }
 
@@ -136,8 +136,21 @@ li {
   border-radius: 10px;
   padding: 10px 25px;
   border: none;
+  resize: none;
+  font-size: 13px;
 }
 .textarea-custom:focus {
+  outline: none;
+}
+
+input[type=text] {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  padding: 0.5em 0.5em;
+  width: 20%;
+}
+input[type=text]:focus {
   outline: none;
 }
 
@@ -161,9 +174,44 @@ li {
   transform: translate(-50%, -50%);
 }
 
+.map {
+  width: 80%;
+  height: 80%;
+}
+
 .leaflet-container {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+.leaflet-container:focus {
+  outline: none;
+}
+
+.leaflet-top {
+  z-index: 90;
+}
+
+.custom-div-icon {
+  width: 100px;
+  height: 100px;
+}
+
+.custom-div-icon {
+  width: 100px;
+  height: 100px;
+}
+.custom-div-icon:nth-child(1n) {
+  background-color: blue;
+}
+.custom-div-icon:nth-child(2n) {
+  background-color: red;
+}
+.custom-div-icon:nth-child(3n) {
+  background-color: yellow;
+}
+.custom-div-icon.resto {
+  background-color: cyan;
 }
 
 .section-room-chat-side-bar {
@@ -176,6 +224,7 @@ li {
   top: 0;
   right: -442px;
   transition: right 0.3s cubic-bezier(0.57, 0.21, 0.69, 1);
+  z-index: 9999999;
 }
 .section-room-chat-side-bar.active {
   right: 0;
@@ -258,7 +307,6 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
 }
 .section-room-listing-resto-container {
   width: 700px;
@@ -286,6 +334,7 @@ li {
 }
 
 .section-all-users {
+  z-index: 999;
   position: absolute;
   left: 0;
   top: 0;
@@ -306,4 +355,15 @@ li {
   display: flex;
   align-items: center;
   gap: 15px;
-}/*# sourceMappingURL=main.css.map */
+}
+
+.add-user {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -19,16 +19,17 @@ const RoomChat = ({currentUser, chatIsDisplay, CloseOnClickChat, room, socket}) 
 
 	const sendMessage = async () => {
 		if (currentMessage !== "") {
-			const messageContent = {
-				room: room.id, user: currentUser.name, message: currentMessage
-			}
-			await socket.emit("send_message", messageContent)
-			setAllMessage((allMessage) => [...allMessage, messageContent])
+				const messageContent = {
+					room: room.id, user: currentUser.name, message: currentMessage
+				}
+				await socket.emit("send_message", messageContent)
+				setAllMessage((allMessage) => [...allMessage, messageContent])
 		}
 	}
 
 	useEffect(() => {
 		socket.on("receive_message", (data) => {
+			console.log(data)
 			setAllMessage((allMessage) => [...allMessage, data])
 		})
 		socket.on("receive_time", (data) => {

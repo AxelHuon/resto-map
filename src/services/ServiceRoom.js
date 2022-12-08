@@ -1,8 +1,9 @@
 const rooms = [{
 	id: "1",
 	finalPoint: {
-		long: 0, lat: 0,
-	}
+		long: 48.892670, lat: 2.237030,
+	},
+
 },]
 
 
@@ -15,3 +16,4 @@ export const getRoom = (roomId) => {
 	})
 	return room
 }
+
