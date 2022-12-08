@@ -21,7 +21,6 @@ const RoomChat = ({currentUser, currentTime, onClickChangeCurrentTime, setCurren
 
 	useEffect(() => {
 		socket.on("receive_message", (data) => {
-			console.log(data)
 			setAllMessage((allMessage) => [...allMessage, data])
 		})
 	}, [socket]);
