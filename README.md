@@ -1,3 +1,18 @@
+# Voici notre application resto map 
+
+### Nous vous avons mis 2 videos pour vous presentez les fonctionnalité de notre application.
+
+##### Partie 1
+https://user-images.githubusercontent.com/70761069/206919601-b52387bc-6877-436c-84b3-48b800ae0a0b.mp4
+
+##### Partie 2
+https://user-images.githubusercontent.com/70761069/206919639-f66a41c7-6519-4004-b983-9ce020c174e8.mp4
+
+**le back se trouve dans un repo a part, pour y acceder vous pouvez cliquer sur ce lien :** https://github.com/AxelHuon/resto-map-back
+Le projet utilise SASS.
+
+lien du repo pour le back:
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
