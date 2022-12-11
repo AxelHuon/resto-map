@@ -9,9 +9,12 @@ https://user-images.githubusercontent.com/70761069/206919601-b52387bc-6877-436c-
 https://user-images.githubusercontent.com/70761069/206919639-f66a41c7-6519-4004-b983-9ce020c174e8.mp4
 
 **le back se trouve dans un repo a part, pour y acceder vous pouvez cliquer sur ce lien :** https://github.com/AxelHuon/resto-map-back
+
 Le projet utilise SASS.
 
-lien du repo pour le back:
+Vous pouvez egalement telecharger nos sudoku solver en cliquant sur ses deux liens :
+Axel [Sudoku.zip](https://github.com/AxelHuon/resto-map/files/10202832/Sudoku.zip)
+PA [sudoku.zip](https://github.com/AxelHuon/resto-map/files/10202834/sudoku.zip)
 
 # Getting Started with Create React App
 
